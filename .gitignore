@@ -5,3 +5,4 @@ venv/
 .pytest_cache
 .dockerignore
 terraform/.terraform/
+terraform/.terraform.lock.hcl
