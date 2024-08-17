@@ -1,0 +1,16 @@
+- name: Install docker on all app nodes
+  hosts: app
+  become: true
+  roles:
+    - docker
+
+- name: Deploy an app from Docker Hub on the VM
+  hosts: app
+  tasks:
+    - name: Deploy the app container
+      docker_container:
+        name: app
+        image: omarbarakota/dockerized_project
+        state: started
+        ports:
+          - "80:8080"
