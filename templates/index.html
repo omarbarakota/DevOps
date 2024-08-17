@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Barakat Website</title>
+    <style>
+        html,body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        }
+        div {
+        width: 100%;
+        height: 50%;
+        float: left;
+        }
+        .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        }
+        .content {
+        z-index: 1; /* To ensure the content is in front of the video */
+        }
+        #background-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        background-size: cover;
+    }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: rgb(1, 223, 197);
+        }
+        h3 {
+            color: rgb(1, 223, 197);
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 1em;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .qr-code {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3px;
+            width: 97%;
+            max-width: auto;
+        }
+        .contact-unit {
+            font-size: 1.5em;
+            background-color: #1176ad47;
+            padding: auto;
+            margin: 5px;
+            border-radius: 5px;
+            width: 30%;
+            height: 75%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .contact-unit h3 {
+            margin-top: 3;
+        }
+        form {
+            margin: 20px 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            color: rgb(1, 223, 197);
+            text-decoration: none;
+            text-size-adjust: auto;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .time {
+            font-size: 2em;
+            margin-top: 20px;
+            color: #009e25;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .container {
+            width: 97%;
+            height: 50%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .map {
+            width: 97%;
+            height: 80%;
+            margin: 5px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #1176ad47;
+            border-radius: 4px;
+            color: aqua;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #bd2130;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="https://hrcdn.net/fcore/assets/onboarding/globe-5fdfa9a0f4.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="content">
+    <h1>Barakat's Website</h1>
+    <div >
+        <h1>Text to QR Code Converter</h1>
+        <form action="/generate" method="POST">
+            <input type="text" name="text" placeholder="Enter text to convert...">
+            <button type="submit">Generate QR Code</button>
+        </form>
+    </div>
+    <div>
+        <h1>Password Generatator</h1>
+        <p><a class="btn" href="/generate_password">Generate Password</a></p>
+       
+    </div>
+    <div>
+        <h1>Current Time</h1>
+        <div class="time">{{ time }}</div>
+        <script>
+            // Refresh the page after 5 seconds (5000 milliseconds)
+            setTimeout(function() {
+                location.reload();
+            }, 60000);
+        </script>
+    </div>
+    <div>
+        <h1>Show Weather</h1>
+        <form action="/weather" method="POST">
+            <label for="city">Enter city name:</label>
+            <input type="text" id="city" name="city" placeholder="Enter city name...">
+            <button type="submit">Get Weather</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+    
+    <h1>More About Us</h1>
+    <div class="map">
+        <iframe width="100%" height="60%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=%20Cairo+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> <a href='https://www.acadoo.de/fachrichtungen/ghostwriter-medizin/'>Medizin Abschlussarbeit</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=a9cc91efe68a5d12d5e9647d4f6a1e80b5002010'></script>
+        <div class="contact-info">
+            <div class="contact-unit">
+                <h3>Mail</h3>
+                <a href="mailto:omar.barkat731@gmail.com">omar.barkat731@gmail.com</a>
+            </div>
+            <div class="contact-unit">
+                <h3>Phone</h3>
+                <a href="tel:+201067700530">+201067700530</a>
+            </div>
+            <div class="contact-unit">
+                <h3>Address</h3>
+                <a href="#">Cairo, Egypt</a>
+            </div>
+        </div>
+    </div> 
+    <div class="container">
+        <h1>To-Do List</h1>
+        <form action="{{ url_for('add_task') }}" method="post">
+            <input type="text" name="task" placeholder="Enter new task">
+            <button type="submit">Add</button>
+        </form>
+        <ul>
+            {% for task in tasks %}
+            
+                <li>
+                    {{ task }}
+                    <form action="{{ url_for('delete_task', task_id=loop.index0) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+                
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>
