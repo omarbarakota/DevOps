@@ -1,10 +1,10 @@
-name: Python Test
+name: Github Actions CI
+
 on: 
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - README.md
+  workflow_run:
+    workflows: ["Python Test"]
+    types:
+      - completed
 
 jobs:
   test:
@@ -47,5 +47,10 @@ jobs:
     - name: Push Docker image
       run: docker push "${{ secrets.DOCKER_USERNAME }}"/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
 
-
+    - name: Upload Test Results Artifact # So if any other action depends on it can work
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: actions-results
+        path: ./actions-results/
 
