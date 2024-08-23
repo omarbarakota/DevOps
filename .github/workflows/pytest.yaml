@@ -44,7 +44,7 @@ jobs:
       run: docker build -t omarbarakota/dockerized_project:latest
       
     - name: Push Docker image
-      run: docker push "${{ secrets.DOCKER_USERNAME }}"/$REPOSITORY:$env.IMAGE_TAG
+      run: docker push "${{ secrets.DOCKER_USERNAME }}"/$env.REPOSITORY:$env.IMAGE_TAG
 
 
 
