@@ -6,3 +6,7 @@ venv/
 .dockerignore
 terraform/.terraform/
 terraform/.terraform.lock.hcl
+ansible/*.pem
+__init__.py
+tests/__pycache__
+tests/__init__
