@@ -29,10 +29,6 @@ jobs:
     runs-on: ubuntu-latest 
     needs: test
 
-    env:
-      REPOSITORY: dockerized_project # Define Dockerhub repo here
-      IMAGE_TAG: test0.1    # Define the image tag here
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
