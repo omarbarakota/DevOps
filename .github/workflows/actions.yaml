@@ -1,4 +1,4 @@
-name: Github Actions CI
+name: Python Test
 
 on: 
   workflow_run:
@@ -46,5 +46,6 @@ jobs:
       
     - name: Push Docker image
       run: docker push "${{ secrets.DOCKER_USERNAME }}"/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+
 
 
