@@ -1,0 +1,51 @@
+name: CI
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: pip install -r requirments.txt
+
+    - name: Run tests
+      run: python -m pytest
+
+  build-and-push-docker:
+    runs-on: ubuntu-latest 
+    needs: test
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Login to DockerHub
+      run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u omarbarakota --password-stdin
+
+    - name: Build Docker image
+      run: docker build -t omarbarakota/dockerized_project:latest .
+
+    - name: Push Docker image
+      run: docker push omarbarakota/dockerized_project:latest
+
+    - name: Tag Docker image if tag is present
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        TAG_NAME=${GITHUB_REF##*/}
+        docker tag omarbarakota/dockerized_project:latest omarbarakota/dockerized_project:$TAG_NAME
+        docker push omarbarakota/dockerized_project:$TAG_NAME
+
+
