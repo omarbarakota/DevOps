@@ -47,10 +47,4 @@ jobs:
     - name: Push Docker image
       run: docker push "${{ secrets.DOCKER_USERNAME }}"/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
 
-    - name: Upload Test Results Artifact # So if any other action depends on it can work
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: actions-results
-        path: ./actions-results/
 
