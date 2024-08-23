@@ -1,10 +1,10 @@
 name: Python Test
 
 on: 
-  workflow_run:
-    workflows: ["Python Test"]
-    types:
-      - completed
+  push:
+    branches: [main]
+    paths-ignore:
+    - ReadMe.md
 
 jobs:
   test:
