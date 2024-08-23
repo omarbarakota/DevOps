@@ -1,6 +1,6 @@
 # DEPI-DevOps Project
 
-- **By** [**Omar Barakat**](https://linkedin.com/in/omarbarakota/)
+[![pytest](https://github.com/omarbarakota/DevOps/actions/workflows/pytest.yaml/badge.svg)](https://github.com/omarbarakota/DevOps/actions/workflows/pytest.yaml)
 
 ## Table Of Content
 
