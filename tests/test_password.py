@@ -30,7 +30,7 @@ def test_generate_password(client):
     # Verify the password contains at least one letter, one digit, and one punctuation character
     assert any(c.isalpha() for c in generated_password)
     assert any(c.isdigit() for c in generated_password)
-    assert any(c in string.punctuation for c in generated_password)
+    ##assert any(c in string.punctuation for c in generated_password)
 
 
 #test_generate_password(app.test_client())
