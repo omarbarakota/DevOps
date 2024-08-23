@@ -1,7 +1,7 @@
 # DEPI-DevOps Project
 
 - **By** [**Omar Barakat**](https://linkedin.com/in/omarbarakota/)
-
+[![CI](https://github.com/omarbarakota/DevOps_Project/actions/workflows/CI.yaml/badge.svg)](https://github.com/omarbarakota/DevOps_Project/actions/workflows/CI.yaml)
 ## Table Of Content
 
 [1- Description](#1--description)
