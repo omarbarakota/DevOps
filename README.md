@@ -1,6 +1,6 @@
 # DEPI-DevOps Project
 
-[![GitHub+Actions+CI](https://github.com/omarbarakota/DevOps_Project/actions/workflows/CI.yaml/badge.svg)](https://github.com/omarbarakota/DevOps_Project/actions/workflows/CI.yaml)
+[![pytest](https://github.com/omarbarakota/DevOps/actions/workflows/pytest.yaml/badge.svg)](https://github.com/omarbarakota/DevOps/actions/workflows/pytest.yaml)
 
 ## Table Of Content
 
