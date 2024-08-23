@@ -2,7 +2,7 @@
 
 - **By** [**Omar Barakat**](https://linkedin.com/in/omarbarakota/)
 
-[![Github Actions CI](https://github.com/omarbarakota/DevOps_Project/actions/workflows/CI.yaml/badge.svg)](https://github.com/omarbarakota/DevOps_Project/actions/workflows/CI.yaml)
+[![GitHub Actions CI](https://github.com/omarbarakota/DevOps_Project/actions/workflows/CI.yaml/badge.svg)](https://github.com/omarbarakota/DevOps_Project/actions/workflows/CI.yaml)
 
 ## Table Of Content
 
