@@ -30,21 +30,21 @@ jobs:
     needs: test
 
     env:
-      REPOSITORY: dockerized_project # Define Dockerhub repo here
-      IMAGE_TAG: test0.1    # Define the image tag here
+      REPOSITORY: "dockerized_project" # Define Dockerhub repo here
+      IMAGE_TAG: "test0.1"    # Define the image tag here
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
     - name: Login to DockerHub
-      run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
+      run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u "${{secrets.DOCKER_USERNAME}}" --password-stdin
 
     - name: Build Docker image
-      run: docker build -t ${{secrets.DOCKER_USERNAME}}/$env.REPOSITORY:$env.IMAGE_TAG
+      run: docker build -t "${{secrets.DOCKER_USERNAME}}"/$env.REPOSITORY:$env.IMAGE_TAG
 
     - name: Push Docker image
-      run: docker push ${{secrets.DOCKER_USERNAME}}/$REPOSITORY:$env.IMAGE_TAG
+      run: docker push "${{secrets.DOCKER_USERNAME}}"/$REPOSITORY:$env.IMAGE_TAG
 
 
 
